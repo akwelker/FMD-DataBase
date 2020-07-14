@@ -1,0 +1,68 @@
+/*
+  SQLite command file that contains the database tables for the Family Map
+
+  each database represents classes or data objs in the java code
+
+  Akwelker
+*/
+
+
+create table Persons
+(
+  person_ID varchar(255) not null,
+
+  userName varchar(255),
+
+  firstName varchar(255) not null,
+  lastName varchar(255) not null,
+
+  /* since gender is stored as a single "m" or "f"
+  it can be represented as a single char */
+    gender char(1) not null,
+
+    father_ID varchar(255),
+    mother_ID varchar(255),
+    spouse_ID varchar(255)
+
+);
+
+create table Events
+(
+  event_ID varchar(255) not null,
+  person_ID varchar(255) not null,
+
+
+  /* latitude and longitude will be stored as doubles with 15 digirs
+  since this represents the most accurate of gps coordinates*/
+
+  latitude double(15),
+  longitude double(15),
+
+  country varchar(255),
+  city  varchar(255),
+
+  event_Type varchar(255) not null,
+  year  int not null
+);
+
+create table AuthCodes
+(
+  code varchar(255) not null,
+  userName varchar(255) not null
+);
+
+create table Users
+(
+  userName varchar(255) not null,
+  password varchar(255) not null,
+
+  firstName varchar(255) not null,
+  lastName varchar(255) not null,
+
+
+/* since gender is stored as a single "m" or "f"
+it can be represented as a single char */
+  gender char(1) not null,
+
+  person_ID varchar(255) not null
+);
